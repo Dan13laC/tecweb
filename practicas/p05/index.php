@@ -99,5 +99,31 @@
                 unset($b);
                 unset($c);
             ?>
+        <h3>Ejercicio 6</h3> 
+            <?php 
+                $a = "0";
+                $b = "TRUE";
+                $c = FALSE;
+                $d = ($a OR $b);
+                $e = ($a AND $c);
+                $f = ($a XOR $b);
+
+                var_dump($a, $b, $c, $d, $e, $f);
+                echo '<br>Sin funcion para imprimir $c y $e<br>';
+                echo "$a<br>$b<br>$c<br>$d<br>$e<br>$f<br>";
+                echo '<br>Con funcion var_export para imprimir $c y $e<br>';
+                echo "$a<br>$b<br>";
+                echo var_export($c);
+                echo "<br>$d<br>";
+                echo var_export($e);
+                echo "<br>$f<br>";
+                echo '<br>var_export($variable) regresa el valor de una variable como un string<br>';
+                unset($a);
+                unset($b);
+                unset($c);
+                unset($d);
+                unset($e);
+                unset($f);
+            ?>
     </body>    
 </html>
