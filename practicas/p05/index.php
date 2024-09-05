@@ -24,6 +24,28 @@
                 echo $_element1.'<br>';
                 echo '$house*5 no es una variable válida porque el * es un caracter no admitido<br>';
             ?>
+        <h3>Ejercicio 2</h3>
+            <?php
+                echo 'Con primer bloque de asignacion<br>';
+                $a = "ManejadorSQL";
+                $b = 'MySQL';
+                $c = &$a;
+                echo $a.'<br>';
+                echo $b.'<br>';
+                echo $c.'<br><br>';
+
+                echo 'Con segundo bloque de asignacion<br>';
+                $a = "PHP server";
+                $b = &$a;
+                echo $a.'<br>';
+                echo $b.'<br>';
+                echo $c.'<br>';
+
+                echo '<p>Aunque solo se modificaron los valores de a y b directamente, al ser c definido por referencia a <i>a</i>, su valor también se modificó </p>';
+                unset($a);
+                unset($b);
+                unset($c);
+            ?>
 
     </body>    
 </html>
