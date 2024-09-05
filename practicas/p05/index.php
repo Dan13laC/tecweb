@@ -46,6 +46,26 @@
                 unset($b);
                 unset($c);
             ?>
+        <h3>Ejercicio 3</h3>
+            <?php
+                
+                $a = "PHP5";
+                echo $a.'<br>';
+                $z[] = &$a;
+                print_r($z);
+                $b = "5a version de PHP";
+                echo '<br>'.$b;
+                $c = $b*10;
+                print_r($c);
+                $a .= $b;
+                echo '<br>';
+                print_r($a);
+                $b *= $c;
+                print_r($b);
+                echo '<br>';
+                $z[0] = "MySQL";
+                print_r($z);
+            ?>
 
     </body>    
 </html>
