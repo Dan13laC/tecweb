@@ -125,5 +125,17 @@
                 unset($e);
                 unset($f);
             ?>
+        <h3>Ejercicio 7</h3>
+            <?php
+                echo 'Obtención de valores con $_SERVER<br>';
+                //print_r($_SERVER);
+                echo '<br>Version de Apache y PHP<br>';
+                echo 'SERVER_SOFTWARE:  '.$_SERVER['SERVER_SOFTWARE'];
+                echo '<br>Nombre sistema operativo (servidor)<br>';
+                echo 'SERVER_NAME: '.$_SERVER['SERVER_NAME'];
+                echo '<br>HTTP_SEC_CH_UA_PLATFORM:  '.$_SERVER['HTTP_SEC_CH_UA_PLATFORM'];
+                echo '<br>Idioma del navegador<br>';
+                echo 'HTTP_ACCEPT_LANGUAGE:  '.$_SERVER['HTTP_ACCEPT_LANGUAGE'];
+            ?>
     </body>    
 </html>
