@@ -66,6 +66,22 @@
                 $z[0] = "MySQL";
                 print_r($z);
             ?>
-
+        <h3>Ejercicio 4</h3>
+            <?php
+                echo 'Impresion de variables globales<br>';
+                global $a;
+                global $z;
+                global $b;
+                global $c;
+                echo '$a =>'.$a.'<br>';
+                
+                echo '$b => '.$b.'<br>';
+                echo '$c => '.$c.'<br>';
+                echo '$z => ';
+                print_r($z);       
+                unset($a);
+                unset($b);
+                unset($c);
+            ?>
     </body>    
 </html>
