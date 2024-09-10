@@ -17,14 +17,14 @@
     <p>¿Quieres cambiar tus viejos tenis por un par personalizado de Tenis Mike&#174;?<br><br>Justifica el por qué tus tenis se <em>tienen que</em> ir y tú puedes ser uno de los diez afortunados ganadores.</p>
     <fieldset>
       <legend><p>Información del Participante</p></legend>
-      <form method="GET" action="http://localhost/tecweb/practicas/p06/respuesta.php"&gt>
+      <form method="POST" action="http://52.43.117.247/neo/classroom/tw/concurso.php"&gt>
         <ul>
           
           <li>Nombre: <input type="text" name="name"></li>
           <li>Dirección de E-mail: <input type="text" name="email"></li>
-          <li>Número Telefónico: <input type="text" name="phonenumber"></li>
+          <li>Número Telefónico: <input type="number" name="phone"></li>
           <li>Mis tenis son tan feos porque...<br>
-            <textarea name="reason" rows="4" cols="60" maxlength="..."
+            <textarea name="story" rows="4" cols="60" maxlength="..."
             placeholder="Ingrese máximo 60 carácteres"></textarea></li>
         </ul>
 
@@ -50,7 +50,7 @@
         <ul>
         <li><input type="checkbox" name="features[]" value="laces">Cordones brillantes</li>
         <li><input type="checkbox" name="features[]" value="logo" checked>Logo metálico</li>
-        <li><input type="checkbox" name="features[]" value="sole">Suela luminosa</li>
+        <li><input type="checkbox" name="features[]" value="suela">Suela luminosa</li>
         <li><input type="checkbox" name="features[]" value="wifi">WiFi integrado</li>
         </ul>
       </fieldset>
