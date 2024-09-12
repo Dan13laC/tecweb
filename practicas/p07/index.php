@@ -42,19 +42,21 @@
         ej4();
     ?>
     <h2>Ejemplo de POST</h2>
-    <form action="http://localhost/tecweb/practicas/p07/index.php" method="post">
-        Name: <input type="text" name="name"><br>
-        E-mail: <input type="text" name="email"><br>
-        <input type="submit">
+    <form action="http://localhost/tecweb/practicas/p07/respf1.php" method="post">
+        Sexo: <input type="text" name="sexo"><br>
+        Edad: <input type="number" name="edad"><br>
+        <input type="submit" name="enviar">
     </form>
     <br>
     <?php
-        if(isset($_POST["name"]) && isset($_POST["email"]))
-        {
-            echo $_POST["name"];
+        if(isset($_POST["sexo"]) && isset($_POST["edad"]))
+        {/*
+            echo $_POST["edad"];
             echo '<br>';
             echo $_POST["email"];
-        }
+        */}
+
+
     ?>
 </body>
 </html>
