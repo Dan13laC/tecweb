@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica 4</title>
+    <title>Práctica 8</title>
 </head>
 <body>
     <h2>Ejercicio 1</h2>
@@ -41,22 +41,5 @@
     <?php
         ej4();
     ?>
-    <h2>Ejemplo de POST</h2>
-    <form action="http://localhost/tecweb/practicas/p07/respf1.php" method="post">
-        Sexo: <input type="text" name="sexo"><br>
-        Edad: <input type="number" name="edad"><br>
-        <input type="submit" name="enviar">
-    </form>
-    <br>
-    <?php
-        if(isset($_POST["sexo"]) && isset($_POST["edad"]))
-        {/*
-            echo $_POST["edad"];
-            echo '<br>';
-            echo $_POST["email"];
-        */}
-
-
-    ?>
-</body>
+    </body>
 </html>

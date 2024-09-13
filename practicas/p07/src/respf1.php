@@ -16,7 +16,7 @@
             if($sexo1 == "femenino"&& ($edad1>=18 && $edad1<=35 )){
                 echo "<p><i>Bienvenida, usted está en el rango de edad permitida</i></p>";
             } else {
-                echo "<p>Error, el sexo no coincide o la edad no se encuentra en el rango</p>";
+                echo "<p><i>Error</i><br>El sexo no coincide o la edad no se encuentra en el rango (de 18 a 35)</p>";
             }
         ?>
     </body>
