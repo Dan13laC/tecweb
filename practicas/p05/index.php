@@ -16,13 +16,13 @@
                 $var7 = '$var7 es una variable porque empieza con $ y contiene carácteres válidos';
                 $_element1 = '$_element1 es una variable porque empieza con $ y contiene carácteres válidos';
                 //$house*5 No es una variable porque el * es un caracter no admitido
-                echo $_myvar.'<br>';
-                echo $_7myvar.'<br>';
-                echo 'myvar no es una variable válida porque no comienza con $<br>';
-                echo $myvar.'<br>';
-                echo $var7.'<br>';
-                echo $_element1.'<br>';
-                echo '$house*5 no es una variable válida porque el * es un caracter no admitido<br>';
+                echo $_myvar.'<br/>';
+                echo $_7myvar.'<br/>';
+                echo '<p>myvar no es una variable válida porque no comienza con $</p>';
+                echo $myvar.'<br/>';
+                echo $var7.'<br/>';
+                echo $_element1.'<br/>';
+                echo '<p>$house*5 no es una variable válida porque el * es un caracter no admitido</p>';
             ?>
         <h3>Ejercicio 2</h3>
             <?php
@@ -137,5 +137,9 @@
                 echo '<br>Idioma del navegador<br>';
                 echo 'HTTP_ACCEPT_LANGUAGE:  '.$_SERVER['HTTP_ACCEPT_LANGUAGE'];
             ?>
+            <p>
+                <a href="https://validator.w3.org/markup/check?uri=referer"><img
+                src="https://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+            </p>
     </body>    
 </html>
