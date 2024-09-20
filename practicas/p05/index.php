@@ -9,39 +9,39 @@
     <body>
         <h3>Ejercicio 1</h3>
             <?php
-                $_myvar = '$_myvar es una variable porque empieza con $ y contiene carácteres válidos';
-                $_7myvar = '$_7myvar es una variable porque empieza con $ y contiene carácteres válidos';
+                $_myvar = '<p>$_myvar es una variable porque empieza con $ y contiene carácteres válidos</p>';
+                $_7myvar = '<p>$_7myvar es una variable porque empieza con $ y contiene carácteres válidos</p>';
                 //myvar No es una variable porque no empieza con $
-                $myvar = '$myvar es una variable porque empieza con $ y contiene carácteres válidos';
-                $var7 = '$var7 es una variable porque empieza con $ y contiene carácteres válidos';
-                $_element1 = '$_element1 es una variable porque empieza con $ y contiene carácteres válidos';
+                $myvar = '<p>$myvar es una variable porque empieza con $ y contiene carácteres válidos</p>';
+                $var7 = '<p>$var7 es una variable porque empieza con $ y contiene carácteres válidos</p>';
+                $_element1 = '<p>$_element1 es una variable porque empieza con $ y contiene carácteres válidos</p>';
                 //$house*5 No es una variable porque el * es un caracter no admitido
-                echo $_myvar.'<br/>';
-                echo $_7myvar.'<br/>';
+                echo $_myvar;
+                echo $_7myvar;
                 echo '<p>myvar no es una variable válida porque no comienza con $</p>';
-                echo $myvar.'<br/>';
-                echo $var7.'<br/>';
-                echo $_element1.'<br/>';
+                echo $myvar;
+                echo $var7;
+                echo $_element1;
                 echo '<p>$house*5 no es una variable válida porque el * es un caracter no admitido</p>';
             ?>
         <h3>Ejercicio 2</h3>
             <?php
-                echo 'Con primer bloque de asignacion<br>';
+                echo '<p>Con primer bloque de asignacion</p>';
                 $a = "ManejadorSQL";
                 $b = 'MySQL';
                 $c = &$a;
-                echo $a.'<br>';
-                echo $b.'<br>';
-                echo $c.'<br><br>';
+                echo "<p>$a</p>";
+                echo "<p>$b</p>";
+                echo "<p>$c</p>";
 
-                echo 'Con segundo bloque de asignacion<br>';
-                $a = "PHP server";
+                echo '<p><br/>Con segundo bloque de asignacion</p>';
+                $a = "<p>PHP server</p>";
                 $b = &$a;
-                echo $a.'<br>';
-                echo $b.'<br>';
-                echo $c.'<br>';
+                echo $a;
+                echo $b;
+                echo $c;
 
-                echo '<p>Aunque solo se modificaron los valores de a y b directamente, al ser c definido por referencia a <i>a</i>, su valor también se modificó </p>';
+                echo '<p><br/>Aunque solo se modificaron los valores de a y b directamente, al ser c definido por referencia a <i>a</i>, su valor también se modificó </p>';
                 unset($a);
                 unset($b);
                 unset($c);
@@ -49,51 +49,62 @@
         <h3>Ejercicio 3</h3>
             <?php
                 
-                $a = "PHP5";
-                echo $a.'<br>';
+                $a = "PHP5 ";
+                echo "<p>$a</p>";
                 $z[] = &$a;
+                echo "<p>";
                 print_r($z);
-                $b = "5a version de PHP";
-                echo '<br>'.$b;
-                $c = $b*10;
+                echo "</p>";
+                $b = "5a version de PHP ";
+                echo "<p>$b</p>";
+                $c = intval($b)*10;
+                echo "<p>";
                 print_r($c);
+                echo "</p>";
                 $a .= $b;
-                echo '<br>';
+                echo "<p>";
                 print_r($a);
-                $b *= $c;
-                print_r($b);
-                echo '<br>';
+                echo "</p>";
+                $b2 = intval($b);
+                $b2 *= $c;
+                echo "<p>";
+                print_r($b2);
+                echo "</p>";
+                //echo '<br/>';
                 $z[0] = "MySQL";
+                echo "<p>";
                 print_r($z);
+                echo "</p>";
             ?>
         <h3>Ejercicio 4</h3>
             <?php
-                echo 'Impresion de variables globales<br>';
+                echo '<p>Impresion de variables globales</p>';
                 global $a;
                 global $z;
                 global $b;
                 global $c;
-                echo '$a =>'.$a.'<br>';
+                echo '<p>$a =>'.$a.'</p>';
                 
-                echo '$b => '.$b.'<br>';
-                echo '$c => '.$c.'<br>';
-                echo '$z => ';
-                print_r($z);       
+                echo '<p>$b => '.$b.'</p>';
+                echo '<p>$c => '.$c.'</p>';
+                echo '<p>$z => '; 
+                print_r($z);    
+                echo '</p>';   
                 unset($a);
                 unset($b);
                 unset($c);
             ?>
         <h3>Ejercicio 5</h3>
             <?php
-                echo 'Impresión de variables después de cada asignación<br>';
+                echo "<p>Impresión de variables después de cada asignación</p>";
                 $a = "7 personas";
-                echo $a.'<br>'; 
+                echo "<p>$a</p>"; 
                 $b = (integer) $a;
-                echo $b.'<br>';
+                echo "<p>$b</p>";
                 $a = "9E3";
-                echo $a.'<br>';
+                echo "<p>$a</p>";
                 $c = (double) $a;
-                echo $c.'<br>';
+                echo "<p>$c</p>";
                 
                 unset($a);
                 unset($b);
@@ -107,17 +118,19 @@
                 $d = ($a OR $b);
                 $e = ($a AND $c);
                 $f = ($a XOR $b);
-
+                
+                echo "<p> Con vardump<br/>";
                 var_dump($a, $b, $c, $d, $e, $f);
-                echo '<br>Sin funcion para imprimir $c y $e<br>';
-                echo "$a<br>$b<br>$c<br>$d<br>$e<br>$f<br>";
-                echo '<br>Con funcion var_export para imprimir $c y $e<br>';
-                echo "$a<br>$b<br>";
+                echo "</p>";
+                echo '<p>Sin funcion para imprimir $c y $e</p>';
+                echo "<p>$a<br/>$b<br/>$c<br/>$d<br/>$e<br/>$f<br/></p>";
+                echo '<p><br/>Con funcion var_export para imprimir $c y $e<br/></p>';
+                echo "<p>$a<br/>$b<br/>";
                 echo var_export($c);
-                echo "<br>$d<br>";
+                echo "<br/>$d<br/>";
                 echo var_export($e);
-                echo "<br>$f<br>";
-                echo '<br>var_export($variable) regresa el valor de una variable como un string<br>';
+                echo "<br/>$f</p>";
+                echo '<p><br/>var_export($variable) regresa el valor de una variable como un string<br/></p>';
                 unset($a);
                 unset($b);
                 unset($c);
@@ -127,15 +140,15 @@
             ?>
         <h3>Ejercicio 7</h3>
             <?php
-                echo 'Obtención de valores con $_SERVER<br>';
+                echo '<p>Obtención de valores con $_SERVER<br/></p>';
                 //print_r($_SERVER);
-                echo '<br>Version de Apache y PHP<br>';
-                echo 'SERVER_SOFTWARE:  '.$_SERVER['SERVER_SOFTWARE'];
-                echo '<br>Nombre sistema operativo (servidor)<br>';
-                echo 'SERVER_NAME: '.$_SERVER['SERVER_NAME'];
-                echo '<br>HTTP_SEC_CH_UA_PLATFORM:  '.$_SERVER['HTTP_SEC_CH_UA_PLATFORM'];
-                echo '<br>Idioma del navegador<br>';
-                echo 'HTTP_ACCEPT_LANGUAGE:  '.$_SERVER['HTTP_ACCEPT_LANGUAGE'];
+                echo '<p>Version de Apache y PHP<br/></p>';
+                echo '<p>SERVER_SOFTWARE:  '.$_SERVER['SERVER_SOFTWARE'].'</p>';
+                echo '<p>Nombre sistema operativo (servidor)<br/></p>';
+                echo '<p>SERVER_NAME: '.$_SERVER['SERVER_NAME'].'</p>';
+                echo '<p>HTTP_SEC_CH_UA_PLATFORM:  '.$_SERVER['HTTP_SEC_CH_UA_PLATFORM'].'</p>';
+                echo '<p>Idioma del navegador</p>';
+                echo '<p>HTTP_ACCEPT_LANGUAGE:  '.$_SERVER['HTTP_ACCEPT_LANGUAGE'].'</p>';
             ?>
             <p>
                 <a href="https://validator.w3.org/markup/check?uri=referer"><img
