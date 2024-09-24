@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+
+  <head>
+    <meta charset="utf-8" >
+    <title>Registro de productos</title>
+    <style type="text/css">
+      ol, ul { 
+      list-style-type: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Registro de productos en MARKETZONE</h1>
+
+    <p>Ingresa los datos que se solicitan</p>
+
+    <form id="formularioProducto" action="http://localhost/tecweb/practicas/p09/set_producto_v2.php" method="post">
+
+      <fieldset>
+        <legend><b>Información del producto</b></legend>
+
+        <ul>
+          <li><label for="form-name">Nombre</label><br><textarea name="nombrep" rows="2" cols="50" id="form-name" placeholder="No más de 100 caracteres de longitud"></textarea></li><li><label for="form-marca">Marca</label> <input type="text" name="marcap" id="form-marca"></li>
+          <li><label for="form-modelo">Modelo</label> <input type="text" name="modelop" id="form-modelo"></li>
+          <li><label for="form-precio">Precio</label> <input type="number" name="preciop" id="form-precio"></li>
+          <li><label for="form-detalles">Detalles</label><br><textarea name="detallesp" rows="5" cols="50" id="form-detalles" placeholder="No más de 250 caracteres de longitud"></textarea></li>
+          <li><label for="form-unidades">Unidades</label> <input type="number" name="unidadesp" id="form-unidades"></li>
+          <li><label for="form-imagen">Imagen</label><br><textarea name="imagenp" rows="2" cols="50" id="form-imagen" placeholder="No más de 100 caracteres de longitud"></textarea></li>
+        </ul>
+      </fieldset>
+
+      <p>
+        <input type="submit" value="Subir">
+        <input type="reset">
+      </p>
+
+    </form>
+  </body>
+</html>
