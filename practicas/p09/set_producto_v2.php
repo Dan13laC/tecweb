@@ -67,8 +67,10 @@
             }
         }
     }
-
-    $sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}')";
+    
+    #$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$detalles}', {$unidades}, '{$imagen}', '{$eliminado}' )";
+    $sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
+        VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagen' )";
     //echo "<p>Los datos a insertar son $sql</p>";
     
     if( $verificado){
