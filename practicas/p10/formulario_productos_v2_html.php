@@ -67,35 +67,35 @@
 
     <p>Ingresa los datos que se solicitan</p>
 
-    <form id="formularioProducto" action="http://localhost/tecweb/practicas/p10/set_producto_v2.php" method="post">
+    <form id="formularioProducto" action="update_producto.php" method="post">
     
 
       <fieldset>
         <legend><b>Información del producto</b></legend>
 
         <ul>
-          <li><label for="form-name">Nombre</label><input type='text' name='nombrep' id="form-name" required></li>
-          <li><label for="form-marca">Marca</label> 
+          <li><label for="form-id">Id </label><input type='text' name='idp' id="form-id" required value="<?= !empty($_POST['idE'])?$_POST['idE']:$_GET['idE'] ?>" readonly="readonly"> </li>
+          <li><label for="form-name">Nombre </label><input type='text' name='nombrep' id="form-name" required value="<?= !empty($_POST['nombreE'])?$_POST['nombreE']:$_GET['nombreE'] ?>"></li>
+          <li><label for="form-marca">Marca </label> 
             <select name="marcap" id="form-marcaselect" size="1">
               <option value="Default">Seleccione una marca</option>
-              <option value="CANSON">CANSON</option>
-              <option value="MOLESKINE">MOLESKINE</option>
-              <option value="Faber-Castell">Faber-Castell</option>
-              <option value="Stabilo">Stabilo</option>
-              <option value="Prismacolor">Prismacolor</option>
-              <option value="Genérico">Genérico</option>
+              <option value="CANSON" <?= ( !empty($_POST['modeloE']) ? $_POST['modeloE'] : $_GET['modeloE']) == 'CANSON' ? 'selected' : ''; ?>>CANSON</option>
+              <option value="MOLESKINE" <?= ( !empty($_POST['modeloE']) ? $_POST['modeloE'] : $_GET['modeloE'])== 'MOLESKINE' ? 'selected' : ''; ?>>MOLESKINE</option>
+              <option value="Faber-Castell" <?= ( !empty($_POST['modeloE']) ? $_POST['modeloE'] : $_GET['modeloE']) == 'Faber-Castell' ? 'selected' : ''; ?>>Faber-Castell</option>
+              <option value="Stabilo" <?= ( !empty($_POST['modeloE']) ? $_POST['modeloE'] : $_GET['modeloE']) == 'Stabilo' ? 'selected' : ''; ?>>Stabilo</option>
+              <option value="Prismacolor" <?= ( !empty($_POST['modeloE']) ? $_POST['modeloE'] : $_GET['modeloE']) == 'Prismacolor' ? 'selected' : ''; ?>>Prismacolor</option>
+              <option value="Genérico" <?= ( !empty($_POST['modeloE']) ? $_POST['modeloE'] : $_GET['modeloE']) == 'Genérico' ? 'selected' : ''; ?>>Genérico</option>
             </select>
-          <li><label for="form-modelo">Modelo</label> <input type="text" name="modelop" id="form-modelo" required></li>
-          <li><label for="form-precio">Precio</label> <input type="number" name="preciop" id="form-precio" required></li>
-          <li><label for="form-detalles">Detalles</label><input type='text' name="detallesp" id="form-detalles"></li>
-          <li><label for="form-unidades">Unidades</label><input type="number" name="unidadesp" id="form-unidades" required></li>
-          <li><label for="form-imagen">Imagen</label><input type='text'name="imagenp" id="form-imagen"></li>
+          <li><label for="form-modelo">Modelo </label> <input type="text" name="modelop" id="form-modelo" required value="<?= !empty($_POST['modeloE'])?$_POST['modeloE']:$_GET['modeloE'] ?>"></li>
+          <li><label for="form-precio">Precio </label> <input type="number" name="preciop" id="form-precio" required value="<?= !empty($_POST['precioE'])?$_POST['precioE']:$_GET['precioE'] ?>"></li>
+          <li><label for="form-detalles">Detalles </label><input type='text' name="detallesp" id="form-detalles" value="<?= !empty($_POST['detallesE'])?$_POST['detallesE']:$_GET['detallesE'] ?>"></li>
+          <li><label for="form-unidades">Unidades </label><input type="number" name="unidadesp" id="form-unidades" required value="<?= !empty($_POST['unidadesE'])?$_POST['unidadesE']:$_GET['unidadesE'] ?>"></li>
+          <li><label for="form-imagen">Imagen </label><input type='text'name="imagenp" id="form-imagen" value="<?= !empty($_POST['imagenE'])?$_POST['imagenE']:$_GET['imagenE'] ?>"></li>
         </ul>
       </fieldset>
       <p>
         <input type="submit" value="Subir" >
         <input type="reset">
-        <input type="button" value="Validar" onClick ="ctrlCaracteres()" >
       </p>
 
     </form>
