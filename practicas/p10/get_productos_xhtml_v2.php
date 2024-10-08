@@ -83,7 +83,7 @@
 			send2form(rowId, nombre, marca, modelo, precio, unidades, detalles, imagen);
 		}
 	</script>
-    <h1>Productos</h1>
+    <h1>Productos con tope = <?= $tope?></h1>
     <table class="table">
 		<thead class="thead-dark">
 			<tr>

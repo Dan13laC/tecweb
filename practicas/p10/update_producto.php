@@ -76,14 +76,14 @@
         VALUES ('$nombre', '$marca', '$modelo', $precio, '$detalles', $unidades, '$imagen' )";
     */
         
-    $sql = "UPDATE productos SET nombre='$nombre', marca='$marca', precio=$precio, detalles='$detalles', unidades=$unidades, imagen='$imagen' WHERE id=$id";
+    $sql = "UPDATE productos SET nombre='$nombre', modelo='$modelo', marca='$marca', precio=$precio, detalles='$detalles', unidades=$unidades, imagen='$imagen' WHERE id=$id";
     
     //echo "<p>Los datos a insertar son $sql</p>";
 
-    /*
+    
     //if( $verificado){
         if ( $link->query($sql) ) {
-            echo 'Se ha actualizado el producto con ID: '.$link->insert_id;
+            echo 'Se ha actualizado el producto con ID: '.$id;
         } else {
             echo 'El Producto no pudo ser actualizado =(';
         }
