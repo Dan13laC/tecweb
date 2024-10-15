@@ -2,11 +2,62 @@
 var baseJSON = {
     "precio": 0.0,
     "unidades": 1,
-    "modelo": "XX-000",
+    "modelo": "XX000",
     "marca": "NA",
     "detalles": "NA",
-    "imagen": "img/default.png"
+    "imagen": "img/imagen.png"
   };
+
+
+function Validado(nombre, marca, modelo, precio, detalles, unidades){
+var validado = true;
+//nombre = document.getElementById('form-name').value;
+if (nombre === "" || nombre.length > 100){
+    alert('El nombre es un campo obligatorio y debe tener menos de 100 caracteres');
+    validado = false;
+} 
+
+
+//marca = document.getElementById('form-marcaselect').value;
+if ( marca == "Default"){
+    alert("Seleccione una marca");
+    validado = false;
+}
+
+var alfnum = /^[a-zA-Z0-9]+$/;
+//modelo = document.getElementById('form-modelo').value;   
+if( modelo.length > 25 || modelo === "" || !alfnum.test(modelo)){
+    alert("El modelo no debe exceder de 25 caracteres, es un campo obligatorio y sólo debe contener valores alfanuméricos");
+    validado = false;
+}
+
+//precio = document.getElementById('form-precio').value;
+if ( precio === "" || precio < 99.99) {
+    alert ("El precio es un campo obligatorio y debe ser mayor o igual a 250");
+    validado = false;
+}
+
+//detalles = document.getElementById('form-detalles').value;
+if (detalles.length > 250){
+    alert("Los detalles no deben a exceder los 250 caracteres");
+    validado = false;
+} 
+
+//unidades = document.getElementById('form-unidades').value;
+if ( unidades === "" || unidades < 0) {
+    alert ("Las unidades son un campo obligatorio y debe ser mayor o igual a 0");
+    validado = false;
+}
+
+//imagen = document.getElementById('form-imagen').value;
+/*
+if ( imagen === "" ){
+    document.getElementById('form-imagen').value = "img/imagen.png";
+    validado = false;
+}
+*/
+return validado;
+}
 
 // FUNCIÓN CALLBACK DE BOTÓN "Buscar"
 function buscarID(e) {
@@ -130,22 +181,45 @@ function agregarProducto(e) {
     var productoJsonString = document.getElementById('description').value;
     // SE CONVIERTE EL JSON DE STRING A OBJETO
     var finalJSON = JSON.parse(productoJsonString);
+
     // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
     finalJSON['nombre'] = document.getElementById('name').value;
-    // SE OBTIENE EL STRING DEL JSON FINAL
-    productoJsonString = JSON.stringify(finalJSON,null,2);
 
-    // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
-    var client = getXMLHttpRequest();
-    client.open('POST', './backend/create.php', true);
-    client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
-    client.onreadystatechange = function () {
-        // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
-        if (client.readyState == 4 && client.status == 200) {
-            console.log(client.responseText);
-        }
-    };
-    client.send(productoJsonString);
+    var valido= Validado(finalJSON.nombre, finalJSON.marca, finalJSON.modelo, finalJSON.precio, finalJSON.detalles, finalJSON.unidades);
+
+    if (valido) {
+        //alert("Los campos son válidos para inserción");
+        // SE OBTIENE EL STRING DEL JSON FINAL
+        productoJsonString = JSON.stringify(finalJSON,null,2);
+
+        // SE CREA EL OBJETO DE CONEXIÓN ASÍNCRONA AL SERVIDOR
+        var client = getXMLHttpRequest();
+        client.open('POST', './backend/create.php', true);
+        client.setRequestHeader('Content-Type', "application/json;charset=UTF-8");
+        client.onreadystatechange = function () {
+            // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
+            if (client.readyState == 4 && client.status == 200) {
+                alert(client.responseText);
+                if (client.responseText == 'Producto insertado'){
+                    baseJSON.precio = 0.0;
+                    baseJSON.modelo= "XX000";
+                    baseJSON.unidades = 1;
+                    baseJSON.detalles = "NA";
+                    baseJSON.marca = "NA";
+                    baseJSON.imagen = "img/imagen.png";
+                    
+                    document.getElementById('name').value = '';
+                    init();
+                }
+                
+
+            }
+        };
+        client.send(productoJsonString);
+    } else {
+        alert("ERROR al validar");
+    }
+    
 }
 
 // SE CREA EL OBJETO DE CONEXIÓN COMPATIBLE CON EL NAVEGADOR
