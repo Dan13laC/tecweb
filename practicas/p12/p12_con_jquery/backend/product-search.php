@@ -19,7 +19,7 @@
                         $data[$num][$key] = utf8_encode($value);
                     }
                 }
-            }
+            }  
 			$result->free();
 		} else {
             die('Query Error: '.mysqli_error($conexion));
