@@ -19,7 +19,7 @@ function init() {
 }
 
 $(document).ready(function(){
-
+  let edit =false;
   var JsonString = JSON.stringify(baseJSON,null,2);
   fetchProducts();
   $('#description').val(JsonString);
@@ -63,6 +63,7 @@ $(document).ready(function(){
     //finalJSON['nombre'] = $('#name').val();
     
     const postData = {
+      id: $('#productId').val(),
       nombre: $('#name').val(),
       precio: finalJSON.precio,
       unidades: finalJSON.unidades,
@@ -71,10 +72,12 @@ $(document).ready(function(){
       detalles: finalJSON.detalles,
       imagen: finalJSON.imagen
     };
+
+    let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
     
     //console.log(postData);
     //e.preventDefault();
-    $.post('./backend/product-add.php', postData, function(response){
+    $.post( url, postData, function(response){
       fetchProducts();
       console.log(response);
       $('#product-form').trigger('reset');
@@ -136,7 +139,23 @@ $(document).ready(function(){
     //console.log(element);
     let id = $(element).attr('prodID');
     //console.log(element+ ' '+id);
-    $.post('')
+    $.post('./backend/product-single.php', {id}, function(response){
+      console.log(response);
+      const product = JSON.parse(response);
+      console.log(product.nombre);
+      $('#name').val(product.nombre);
+      var jsonfinal = {
+        "precio": Number(product.precio),
+        "unidades": Number(product.unidades),
+        "modelo": product.modelo,
+        "marca": product.marca,
+        "detalles": product.detalles,
+        "imagen": product.imagen
+      };
+      $('#productId').val(product.id);
+      $('#description').val(JSON.stringify(jsonfinal,null,2));
+      edit = true;
+    })
   })  
 });
 
