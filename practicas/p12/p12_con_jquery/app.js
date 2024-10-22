@@ -21,6 +21,7 @@ function init() {
 $(document).ready(function(){
 
   var JsonString = JSON.stringify(baseJSON,null,2);
+  fetchProducts();
   $('#description').val(JsonString);
   $('#product-result').hide();
 
@@ -74,36 +75,68 @@ $(document).ready(function(){
     //console.log(postData);
     //e.preventDefault();
     $.post('./backend/product-add.php', postData, function(response){
+      fetchProducts();
       console.log(response);
       $('#product-form').trigger('reset');
+
     });
   });
 
-  $.ajax({
-    url: './backend/product-list.php',
-    type: 'GET',
-    success: function (response) {
+  function fetchProducts(){
+    $.ajax({
+      url: './backend/product-list.php',
+      type: 'GET',
+      success: function (response) {
+        //console.log(response);
+        let productos = JSON.parse(response);
+        let template = '';
+        
+        productos.forEach(producto => {
+          template += `
+            <tr prodID="${producto.id}">
+                <td>${producto.id}</td>
+                <td>
+                  <a href="#" class="product-item">${producto.nombre}</a>
+                </td>
+                <td>
+                  <ul>${producto.precio}</ul>
+                  <ul>${producto.unidades}</ul>
+                  <ul>${producto.modelo}</ul>
+                  <ul>${producto.marca}</ul>
+                  <ul>${producto.detalles}</ul>    
+                </td>
+                <td>
+                  <button class="product-delete btn btn-danger">
+                  Delete
+                  </button>
+                </td>
+            </tr>`;
+        });
+        $('#products').html(template);
+      }
+    }); 
+  }
+  //Eliminar productos
+  $(document).on('click', '.product-delete', function(){
+   if(confirm('Are yo sure you want to delete it?')){
+    let element  = $(this)[0].parentElement.parentElement;
+    //console.log(element);
+    let id = $(element).attr('prodID');
+    //console.log(id);
+    $.post('./backend/product-delete.php', {id}, function (response){
       //console.log(response);
-      let productos = JSON.parse(response);
-      let template = '';
-      
-      productos.forEach(producto => {
-        template += `
-          <tr>
-              <td>${producto.id}</td>
-              <td>${producto.nombre}</td>
-              <td>
-                <ul>${producto.precio}</ul>
-                <ul>${producto.unidades}</ul>
-                <ul>${producto.modelo}</ul>
-                <ul>${producto.marca}</ul>
-                <ul>${producto.detalles}</ul>    
-            </td>
-          </tr>
-      `;
-      });
-      $('#products').html(template);
-    }
-  })
+      fetchProducts();
+    })
+   }
+  });
+//Editar producto
+  $(document).on('click', '.product-item', function(){
+    //console.log('editing');
+    let element = $(this)[0].parentElement.parentElement;
+    //console.log(element);
+    let id = $(element).attr('prodID');
+    //console.log(element+ ' '+id);
+    $.post('')
+  })  
 });
 
