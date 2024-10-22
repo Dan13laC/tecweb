@@ -13,15 +13,18 @@ function init() {
      * Convierte el JSON a string para poder mostrarlo
      * ver: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON
      */
-    var JsonString = JSON.stringify(baseJSON,null,2);
-    document.getElementById("description").value = JsonString;
+    
     // SE LISTAN TODOS LOS PRODUCTOS
     
 }
 
 $(document).ready(function(){
+
+  var JsonString = JSON.stringify(baseJSON,null,2);
+  $('#description').val(JsonString);
   $('#product-result').hide();
 
+  //búsqueda
   $('#search').keyup(function(){
     if ( $('#search').val() ){
       let search = $('#search').val();
@@ -48,6 +51,32 @@ $(document).ready(function(){
       })
     }
      
+  });
+
+  $('#product-form').submit(function(e){
+    e.preventDefault();
+    //console.log('Submiting');
+    let desc = $('#description').val();
+    var finalJSON = JSON.parse(desc);
+    //finalJSON['nombre'] = $('#name').val();
+    
+    const postData = {
+      nombre: $('#name').val(),
+      precio: finalJSON.precio,
+      unidades: finalJSON.unidades,
+      modelo: finalJSON.modelo,
+      marca: finalJSON.marca,
+      detalles: finalJSON.detalles,
+      imagen: finalJSON.imagen
+    };
+    
+    //console.log(postData);
+    //e.preventDefault();
+    $.post('./backend/product-add.php', postData, function(response){
+      console.log(response);
+      $('#product-form').trigger('reset');
+    });
+    
   });
 
 });
