@@ -53,6 +53,7 @@ $(document).ready(function(){
      
   });
 
+  //Agregar productos
   $('#product-form').submit(function(e){
     e.preventDefault();
     //console.log('Submiting');
@@ -76,8 +77,33 @@ $(document).ready(function(){
       console.log(response);
       $('#product-form').trigger('reset');
     });
-    
   });
 
+  $.ajax({
+    url: './backend/product-list.php',
+    type: 'GET',
+    success: function (response) {
+      //console.log(response);
+      let productos = JSON.parse(response);
+      let template = '';
+      
+      productos.forEach(producto => {
+        template += `
+          <tr>
+              <td>${producto.id}</td>
+              <td>${producto.nombre}</td>
+              <td>
+                <ul>${producto.precio}</ul>
+                <ul>${producto.unidades}</ul>
+                <ul>${producto.modelo}</ul>
+                <ul>${producto.marca}</ul>
+                <ul>${producto.detalles}</ul>    
+            </td>
+          </tr>
+      `;
+      });
+      $('#products').html(template);
+    }
+  })
 });
 
