@@ -9,13 +9,13 @@
     // SE VERIFICA HABER RECIBIDO EL ID
     if( isset($_POST['id']) ) {
         $id = $_POST['id'];
-        echo 'id '.$id;
+        //echo 'id '.$id;
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
         $sql = "UPDATE productos SET eliminado=1 WHERE id = $id";
-        echo $sql;
+        //echo $sql;
         if ( $conexion->query($sql) ) {
             $data['status'] =  "success";
-            $data['message'] =  "Producto eliminado";
+            $data['message'] =  "Producto con id $id eliminado";
 		} else {
             $data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($conexion);
         }

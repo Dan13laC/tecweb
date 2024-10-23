@@ -5,7 +5,7 @@
     //$producto = file_get_contents('php://input');
     $data = array(
         'status'  => 'error',
-        'message' => 'Ya existe un producto con ese nombre'
+        'message' => 'No se encontró el producto'
     );
 
     
@@ -20,7 +20,7 @@
         $imagen   = $_POST['imagen'];
         // SE TRANSFORMA EL STRING DEL JASON A OBJETO
         $jsonOBJ = json_decode(json_encode($_POST));
-        echo json_encode($jsonOBJ, JSON_PRETTY_PRINT);
+        //echo json_encode($jsonOBJ, JSON_PRETTY_PRINT);
         // SE ASUME QUE LOS DATOS YA FUERON VALIDADOS ANTES DE ENVIARSE
 /*        $sql = "UPDATE productos SET nombre='$nombre', modelo='$modelo', marca='$marca', precio=$precio, detalles='$detalles', unidades=$unidades, imagen='$imagen' WHERE id=$id";
         
@@ -34,14 +34,14 @@
 
 */
             $jsonOBJ = json_decode(json_encode($_POST));
-            echo json_encode($jsonOBJ, JSON_PRETTY_PRINT);
+            //echo json_encode($jsonOBJ, JSON_PRETTY_PRINT);
             // SE ASUME QUE LOS DATOS YA FUERON VALIDADOS ANTES DE ENVIARSE
                 $conexion->set_charset("utf8");
                 $sql = "UPDATE productos set nombre='$jsonOBJ->nombre', marca='$jsonOBJ->marca', modelo='$jsonOBJ->modelo', precio=$jsonOBJ->precio, detalles='$jsonOBJ->detalles', unidades=$jsonOBJ->unidades, imagen='$jsonOBJ->imagen' where id=$jsonOBJ->id ";
                 ///*
                 if($conexion->query($sql)){
                     $data['status'] =  "success";
-                    $data['message'] =  "Producto agregado";
+                    $data['message'] =  "Producto modificado";
                 } else {
                     $data['message'] = "ERROR: No se ejecuto $sql. " . mysqli_error($conexion);
                 }

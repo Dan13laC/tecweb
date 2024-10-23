@@ -54,7 +54,57 @@ $(document).ready(function(){
      
   });
 
-  //Agregar productos
+  function Validado(nombre, marca, modelo, precio, detalles, unidades){
+    var validado = true;
+    //nombre = document.getElementById('form-name').value;
+    if (nombre === "" || nombre.length > 100){
+        alert('El nombre es un campo obligatorio y debe tener menos de 100 caracteres');
+        validado = false;
+    } 
+    
+    
+    //marca = document.getElementById('form-marcaselect').value;
+    if ( marca === "" || modelo.length > 25){
+        alert("Seleccione una marca");
+        validado = false;
+    }
+    
+    var alfnum = /^[a-zA-Z0-9]+$/;
+    //modelo = document.getElementById('form-modelo').value;   
+    if( modelo.length > 25 || modelo === "" || !alfnum.test(modelo)){
+        alert("El modelo no debe exceder de 25 caracteres, es un campo obligatorio y sólo debe contener valores alfanuméricos");
+        validado = false;
+    }
+    
+    //precio = document.getElementById('form-precio').value;
+    if ( precio === "" || precio < 99.99) {
+        alert ("El precio es un campo obligatorio y debe ser mayor a 99.99");
+        validado = false;
+    }
+    
+    //detalles = document.getElementById('form-detalles').value;
+    if (detalles.length > 250){
+        alert("Los detalles no deben a exceder los 250 caracteres");
+        validado = false;
+    } 
+    
+    //unidades = document.getElementById('form-unidades').value;
+    if ( unidades === "" || unidades < 0) {
+        alert ("Las unidades son un campo obligatorio y debe ser mayor o igual a 0");
+        validado = false;
+    }
+    
+    //imagen = document.getElementById('form-imagen').value;
+    /*
+    if ( imagen === "" ){
+        document.getElementById('form-imagen').value = "img/imagen.png";
+        validado = false;
+    }
+    */
+    return validado;
+    }
+
+  //Agregar/Editar productos
   $('#product-form').submit(function(e){
     e.preventDefault();
     //console.log('Submiting');
@@ -73,16 +123,27 @@ $(document).ready(function(){
       imagen: finalJSON.imagen
     };
 
-    let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
+    //alert(JSON.stringify(postData,null,2));
+    //nombre, marca, modelo, precio, detalles, unidades
+    var valido = Validado (postData.nombre, postData.marca, postData.modelo, postData.precio, postData.detalles, postData.unidades);
+    if (valido) {
+      let url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
+      
+      //console.log(postData);
+      //e.preventDefault();
+      $.post( url, postData, function(response){
+        fetchProducts();
+        //console.log(response);
+        $('#product-form').trigger('reset');
+        //var JsonString = JSON.stringify(baseJSON,null,2);
+        $('#description').val(JSON.stringify(baseJSON,null,2));
+        alert(response);
+      });
+    } else {
+      alert("Hay campos no válidos para inserción");
+    }
     
-    //console.log(postData);
-    //e.preventDefault();
-    $.post( url, postData, function(response){
-      fetchProducts();
-      console.log(response);
-      $('#product-form').trigger('reset');
-
-    });
+    
   });
 
   function fetchProducts(){
@@ -129,9 +190,11 @@ $(document).ready(function(){
     $.post('./backend/product-delete.php', {id}, function (response){
       //console.log(response);
       fetchProducts();
+      alert(response);
     })
    }
   });
+  
 //Editar producto
   $(document).on('click', '.product-item', function(){
     //console.log('editing');

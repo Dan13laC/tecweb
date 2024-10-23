@@ -11,7 +11,7 @@
     if(isset($_POST['nombre'])) {
         // SE TRANSFORMA EL STRING DEL JASON A OBJETO
         $jsonOBJ = json_decode(json_encode($_POST));
-        echo json_encode($jsonOBJ, JSON_PRETTY_PRINT);
+        //echo json_encode($jsonOBJ, JSON_PRETTY_PRINT);
         // SE ASUME QUE LOS DATOS YA FUERON VALIDADOS ANTES DE ENVIARSE
         $sql = "SELECT * FROM productos WHERE nombre = '{$jsonOBJ->nombre}' AND eliminado = 0";
 	    $result = $conexion->query($sql);
