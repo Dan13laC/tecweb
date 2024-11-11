@@ -1,8 +1,8 @@
 <?php
-    use ACTIVIDADES\PRODUCTOS\Products as Products;
-    require_once __DIR__.'/myapi/Products.php';
+    use MYAPI\Edit\Edit;
+    require_once __DIR__.'/vendor/autoload.php';
 
-    $prod = new Products('marketzone');
+    $prod = new Edit('marketzone');
     $prod-> edit($_POST);
     //$prod-> edit(json_decode(json_encode($_POST, JSON_FORCE_OBJECT)));
     

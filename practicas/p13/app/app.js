@@ -15,7 +15,7 @@ function fetchProducts(){
     url: './backend/product-list.php',
     type: 'GET',
     success: function (response) {
-      //console.log(response);
+      console.log(response);
       let productos = JSON.parse(response);
       let template = '';
       

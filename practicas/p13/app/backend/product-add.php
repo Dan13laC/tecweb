@@ -1,8 +1,8 @@
 <?php
-    use ACTIVIDADES\PRODUCTOS\Products as Products;
-    require_once __DIR__.'/myapi/Products.php';
+    use MYAPI\Create\Create;
+    require_once __DIR__.'/vendor/autoload.php';
 
-    $prod = new Products('marketzone');
+    $prod = new Create('marketzone');
     $prod-> add($_POST);
     echo $prod->getData();
     /*

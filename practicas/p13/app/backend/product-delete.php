@@ -1,8 +1,8 @@
 <?php
-    use ACTIVIDADES\PRODUCTOS\Products as Products;
-    require_once __DIR__.'/myapi/Products.php';
+    use MYAPI\Delete\Delete;
+    require_once __DIR__.'/vendor/autoload.php';
 
-    $prod = new Products('marketzone');
+    $prod = new Delete('marketzone');
     //$prod-> delete();
     $prod-> delete($_POST);
     echo $prod->getData();

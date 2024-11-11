@@ -1,9 +1,9 @@
 <?php
-    use ACTIVIDADES\PRODUCTOS\Products;
-    require_once __DIR__.'/myapi/Products.php';
+    use MYAPI\Read\Read;
+    require_once __DIR__.'/vendor/autoload.php';
 
-    $prod = new Products('marketzone');
-    $prod-> singleByName($_GET);
+    $prod = new Read('marketzone');
+    $prod-> search($_GET);
     echo $prod->getData();
     /*
     include_once __DIR__.'/database.php';
@@ -11,10 +11,10 @@
     // SE CREA EL ARREGLO QUE SE VA A DEVOLVER EN FORMA DE JSON
     $data = array();
     // SE VERIFICA HABER RECIBIDO EL ID
-    if( isset($_GET['nombre']) ) {
-        $nombre = $_GET['nombre'];
+    if( isset($_GET['search']) ) {
+        $search = $_GET['search'];
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-        $sql = "SELECT * FROM productos WHERE nombre LIKE '{$nombre}' and eliminado = 0";
+        $sql = "SELECT * FROM productos WHERE (id = '{$search}' OR nombre LIKE '%{$search}%' OR marca LIKE '%{$search}%' OR detalles LIKE '%{$search}%') AND eliminado = 0";
         if ( $result = $conexion->query($sql) ) {
             // SE OBTIENEN LOS RESULTADOS
 			$rows = $result->fetch_all(MYSQLI_ASSOC);

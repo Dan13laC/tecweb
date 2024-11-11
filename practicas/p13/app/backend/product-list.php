@@ -1,8 +1,8 @@
 <?php
-    use ACTIVIDADES\PRODUCTOS\Products as Products;
-    require_once __DIR__.'/myapi/Products.php';
+    use MYAPI\Read\Read;
+    require_once __DIR__.'../vendor/autoload.php';
 
-    $prod = new Products('marketzone');
+    $prod = new Read('marketzone');
     $prod-> list();
     echo $prod->getData();
     /*
