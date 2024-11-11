@@ -8,7 +8,7 @@
             parent::__construct($db);
         }
         
-        public function add(){//Object
+        public function add($producto){//Object
             $data = array(
                 'status'  => 'error',
                 'message' => 'Ya existe un producto con ese nombre'

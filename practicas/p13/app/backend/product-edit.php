@@ -1,8 +1,8 @@
 <?php
-    use MYAPI\Edit\Edit;
+    use MYAPI\Update\Update;
     require_once __DIR__.'/vendor/autoload.php';
 
-    $prod = new Edit('marketzone');
+    $prod = new Update('marketzone');
     $prod-> edit($_POST);
     //$prod-> edit(json_decode(json_encode($_POST, JSON_FORCE_OBJECT)));
     
