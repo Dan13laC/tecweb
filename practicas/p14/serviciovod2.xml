@@ -1,0 +1,39 @@
+<!DOCTYPE CatalogoVOD SYSTEM "serviciovod.dtd">
+<CatalogoVOD>
+    <cuenta correo= "danicamacho22.dc@gmail.com">
+        <perfiles>
+            <perfil usuario="Daniela" idioma="Español"></perfil> 
+            <perfil usuario="Fernanda" idioma="Inglés"></perfil> 
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero nombre="Comedia romántica">
+                <titulo duracion="01:50:00">Love, Rosie</titulo>
+                <titulo duracion="02:10:00">Cuestión de tiempo</titulo>
+                <titulo duracion="02:04:00">Con todos menos contigo</titulo>
+                <titulo duracion="2h 08 min">La La Land</titulo>
+            </genero>
+            <genero nombre="Ciencia ficción">
+                <titulo duracion="02:15:00">Duna</titulo>
+                <titulo duracion="01:56:00">Love and monsters</titulo>
+                <titulo duracion="02:10:00">Todo en todas partes al mismo tiempo</titulo>
+                <titulo duracion="02:04:00">El planeta de los simios</titulo>
+            </genero>
+        </peliculas>
+        <programas>
+            <genero nombre="Drama médico">
+                <titulo duracion="00:50:00">Grey's Anatomy</titulo>
+                <titulo duracion="00:45:00">Dr. House</titulo>
+                <titulo duracion="00:43:00">The Good Doctor</titulo>
+                <titulo duracion="00:60:00">Dr. Romantic</titulo>
+            </genero>
+            <genero nombre="Acción">
+                <titulo duracion="00:50:00">My name</titulo>
+                <titulo duracion="00:48:00">Outlander</titulo>
+                <titulo duracion="00:41:00">SWAT</titulo>
+                <titulo duracion="00:49:00">The Walking Dead</titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>
