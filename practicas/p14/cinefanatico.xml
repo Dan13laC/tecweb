@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cinefanatico SYSTEM "cinefanatico.dtd">
+<cinefanatico>
+    <tarjeta noserie="123456" visitas="12" puntos="50">
+        <nombre>Lily Collins</nombre>
+        <correo>lcollins@correo.com</correo>
+        <telefono tipo="movil">2234561252</telefono>
+        <telefono tipo="casa">2220001234</telefono>
+    </tarjeta>
+    <tarjeta noserie="789012" visitas="30" puntos="105">
+        <nombre>Bruno Mars</nombre>
+        <correo>brunoMars@correo.com</correo>
+    </tarjeta>
+</cinefanatico>
