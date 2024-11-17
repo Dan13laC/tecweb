@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tw:Spotify version="1.0" xmlns:tw="http://tecnologiasweb.com.mx"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+    xs:schemaLocation="http://tecnologiasweb.com.mx spotify_ns.xsd">
+    <tw:Cuenta id="1" plan="premium" fechaIni="2022-02-01" fechaFin="2023-02-01">
+        <tw:Nombre>Luca</tw:Nombre>
+        <tw:Correo>luca@correo.com</tw:Correo>
+    </tw:Cuenta>
+    <tw:Cuenta id="2" plan="premium" fechaIni="2022-02-01" fechaFin="2023-02-01">
+        <tw:Nombre>Lecuac</tw:Nombre>
+        <tw:Correo>lecuac@correo.com</tw:Correo>
+        <tw:Telefono tipo="casa">1234567890</tw:Telefono>
+    </tw:Cuenta>
+</tw:Spotify>

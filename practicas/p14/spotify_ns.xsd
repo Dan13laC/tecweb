@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:tw="http://tecnologiasweb.com.mx"
+    targetNamespace="http://tecnologiasweb.com.mx"
+    elementFormDefault="qualified">
+    <complexType name="cuentaType" >
+        <sequence>
+            <element name="Nombre" type="string"/>
+            <element name="Correo" type="string"/>
+            <element name="Telefono" minOccurs="0">
+                <complexType>
+                    <simpleContent>
+                        <extension base="string">
+                            <attribute name="tipo" use="required"/>
+                        </extension>
+                    </simpleContent>
+                </complexType>
+            </element>
+        </sequence>
+        <attribute name="id" use="required"/>
+        <attribute name="plan" use="required"/>
+        <attribute name="fechaIni"/>
+        <attribute name="fechaFin"/>
+    </complexType>
+    <complexType name="spotifyType">
+        <sequence>
+            <element name="Cuenta"  minOccurs="1" maxOccurs="unbounded" type="tw:cuentaType"/>
+        </sequence>
+        <attribute name="version"/>
+    </complexType>
+    
+    <element name="Spotify" type="tw:spotifyType"/>
+    
+</schema>
